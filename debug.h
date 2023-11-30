@@ -32,6 +32,13 @@ void debug_f(auto first, auto... append) {
   if (sizeof...(append)) { cerr << ", "; }
   debug_f(append...);
 }
-#define debug(x...)                                 \
-  cerr << "line #" << __LINE__ << ": (" #x ") = ("; \
+#define debug(x...)                                     \
+  cerr << __FILE__ ":" << __LINE__ << ": (" #x ") = ("; \
   debug_f(x);
+#define debug_assert(a, x...)                            \
+  if (not(a)) {                                          \
+    cerr << __FILE__ ":" << __LINE__                     \
+         << ": Assertion `" #a "` failed. (" #x ") = ("; \
+    debug_f(x);                                          \
+    return 0;                                            \
+  }
