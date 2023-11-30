@@ -36,5 +36,5 @@ void debug_f(auto first, auto... append) {
     cerr << __FILE__ ":" << __LINE__                     \
          << ": Assertion `" #a "` failed. (" #x ") = ("; \
     debug_f(x);                                          \
-    return 0;                                            \
+    exit(0);                                             \
   }
