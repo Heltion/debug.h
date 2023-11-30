@@ -1,9 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-template <class T1, class T2>
-string serialize(pair<T1, T2>);
-template <class... T>
-string serialize(tuple<T...>);
+template <class T1, class T2> string serialize(pair<T1, T2>);
+template <class... T> string serialize(tuple<T...>);
 string serialize(char c) { return "\'"s + c + "\'"; }
 string serialize(string s) { return "\"" + s + "\""; }
 string serialize(const char* s) { return "\""s + s + "\""; }
@@ -14,12 +12,10 @@ string serialize(ranges::range auto r) {
   for (auto x : r) { res += (res.empty() ? "[" : ", ") + serialize(x); }
   return res + "]";
 }
-template <class T1, class T2>
-string serialize(pair<T1, T2> p) {
+template <class T1, class T2> string serialize(pair<T1, T2> p) {
   return "(" + serialize(p.first) + ", " + serialize(p.second) + ")";
 }
-template <class... T>
-string serialize(tuple<T...> t) {
+template <class... T> string serialize(tuple<T...> t) {
   string res;
   [&]<size_t... I>(index_sequence<I...>) {
     (..., (res += (res.empty() ? "(" : ", ") + serialize(get<I>(t))));
@@ -34,7 +30,7 @@ void debug_f(auto first, auto... append) {
 }
 #define debug(x...)                                     \
   cerr << __FILE__ ":" << __LINE__ << ": (" #x ") = ("; \
-  debug_f(x);
+  debug_f(x)
 #define debug_assert(a, x...)                            \
   if (not(a)) {                                          \
     cerr << __FILE__ ":" << __LINE__                     \
