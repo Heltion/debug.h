@@ -8,8 +8,8 @@ string serialize(const char* s) { return "\""s + s + "\""; }
 string serialize(bool b) { return b ? "true" : "false"; }
 string serialize(auto x) { return to_string(x); }
 string serialize(ranges::range auto r) {
-  string res;
-  for (auto x : r) { res += (res.empty() ? "[" : ", ") + serialize(x); }
+  string res = "[";
+  for (auto x : r) { res += (res.size() == 1 ? "" : ", ") + serialize(x); }
   return res + "]";
 }
 template <class T1, class T2> string serialize(pair<T1, T2> p) {
