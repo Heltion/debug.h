@@ -16,9 +16,9 @@ template <class T1, class T2> string serialize(pair<T1, T2> p) {
   return "(" + serialize(p.first) + ", " + serialize(p.second) + ")";
 }
 template <class... T> string serialize(tuple<T...> t) {
-  string res;
+  string res = "(";
   [&]<size_t... I>(index_sequence<I...>) {
-    (..., (res += (res.empty() ? "(" : ", ") + serialize(get<I>(t))));
+    (..., (res += (res.size() == 1 ? "" : ", ") + serialize(get<I>(t))));
   }(make_index_sequence<sizeof...(T)>());
   return res + ")";
 }
