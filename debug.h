@@ -1,13 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
-template <class T> concept printable = requires(ostream& os, T t) { os << t; } and not is_same_v<T, string>;
+template <class T> concept printable = requires(ostream& os, T t) { os << t; };
+template <class T> concept iterable = ranges::range<T> and not is_same_v<T, string> and not requires() { tuple_size<T>::value; };
 template <class T, size_t size = tuple_size<T>::value> string to_debug(T);
 string to_debug(printable auto t) {
   ostringstream oss;
   oss << t;
   return oss.str();
 }
-string to_debug(ranges::range auto r) {
+string to_debug(iterable auto r) {
   string s;
   for (auto x : r) { s += ", " + to_debug(x); }
   return "[" + s.substr(s.empty() ? 0 : 2) + "]";
