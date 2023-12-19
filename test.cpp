@@ -19,4 +19,5 @@ int main() {
   debug(vector<bool>{true, false, true});
   debug(bitset<10>(12));
   debug(new int());
+  debug(array<int, 4>{1, 2, 3, 4});
 }
