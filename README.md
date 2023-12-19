@@ -14,6 +14,6 @@ test.cpp:17: (tuple(3, 4, 5)) = (3, 4, 5)
 test.cpp:18: (pair(tuple(3, 2, 4, pair(1, 2)), vector({pair(1, 2), pair(3, 4), pair(5, 6)}))) = ((3, 2, 4, (1, 2)), [(1, 2), (3, 4), (5, 6)])
 test.cpp:19: (vector<bool>{true, false, true}) = ([1, 0, 1])
 test.cpp:20: (bitset<10>(12)) = (0000001100)
-test.cpp:21: (new int()) = (0x558b3bbe3f50)
-test.cpp:22: (array<int, 4>{1, 2, 3, 4}) = ((1, 2, 3, 4))
+test.cpp:21: (new int()) = (0x55cef9d5ef50)
+test.cpp:22: (array<int, 4>{1, 2, 3, 4}) = ([1, 2, 3, 4])
 ```
